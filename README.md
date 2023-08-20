@@ -14,7 +14,9 @@ The answer is simply that I am now taking the evolutionary systems discpline at 
 
 ## Approach
 
-First, I need the cities to be generated. There's a city struct which contains an int x and an int y and I need an array of cities. Initially, those cities were being generated with random x's and y's at the beggining of the code, this was bad for comparing purposes. In order to solve this, I created a separated program to create and store in a file an array of randomly generated cities(cidades.c).
+First, I need the cities to be generated. There's a city struct which contains an int x and an int y and I need an array of cities. Initially, those cities were being generated with random x's and y's at the beggining of the code, this was bad for comparing purposes. In order to solve this, I created a separated program to create and store in a file an array of randomly generated cities(cidades.c). It's importante to notice that I am using argc and argv in those programs, and the argv argument of cidades.c is the number of cities which is also gonna be stored in a file for posterior reading.
+
+Also, it's important to be able to compare to an actual solid answer. That being said, a brute force algorithm was built for comparing porpuses, as it is extremely inefficient for reasons already explained. This brute force algorithm writes a file containing the perfect individual and also the time it took to calculate. (12 cities is taking around 50 seconds) (bruteforce.c)
 
 Now the main code reads from that file to start.
 
