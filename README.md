@@ -14,4 +14,16 @@ The answer is simply that I am now taking the evolutionary systems discpline at 
 
 ## Approach
 
-First, I need the cities to be generate. So theres a city struct which contains a int x and an int y and I need an array of cities. Initially, those cities were being generated with random x's and y's at the beggining of the code, this was bad for comparing purposes. In order to solve this, i created a separated program to create and store in a file an array of randomly generated cities(cidades.c).
+First, I need the cities to be generated. There's a city struct which contains an int x and an int y and I need an array of cities. Initially, those cities were being generated with random x's and y's at the beggining of the code, this was bad for comparing purposes. In order to solve this, I created a separated program to create and store in a file an array of randomly generated cities(cidades.c).
+
+Now the main code reads from that file to start.
+
+Randomly initialize the population with a given number of individuals by creating a population array of individual structures which contain an int array and a double fitness(to store the distance of its path). After this, their arrays are shuffled.
+
+Score each individual and the one with the lowest fitness or distance is copied to the variable best.
+The best won't die nor be mutated until a new one is found.
+
+Mutation - There's a lot of ways this can happen, the most simple might be to randomly choose two cities to swap places. A mutation rate might even increase how many times this happens to each individual.
+
+The scoring, selection and mutation processes repeat until the number of generations is met.
+You might be thinking I forgot about crossover, but it was intentionally left out as it was most proeminently just generating random beings. The code without the graphics and with the most basics strategies can be seen in travelling.c
