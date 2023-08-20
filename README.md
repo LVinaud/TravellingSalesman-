@@ -14,4 +14,4 @@ The answer is simply that I am now taking the evolutionary systems discpline at 
 
 ## Approach
 
-First, I need the cities to be generate. So theres a city struct which contains a int x and an int y and I need an array of cities. Initially, those cities were being generated with random x's and y's at the beggining of the code, this was bad for comparing purposes.
+First, I need the cities to be generate. So theres a city struct which contains a int x and an int y and I need an array of cities. Initially, those cities were being generated with random x's and y's at the beggining of the code, this was bad for comparing purposes. In order to solve this, i created a separated program to create and store in a file an array of randomly generated cities(cidades.c).
