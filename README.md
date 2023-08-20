@@ -2,7 +2,7 @@
 
 Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city? 
 
-This is the travelling salesman problem, the most intuitive approach to finding the soluton could be to calculate all possible routes and select the sortest. This is not a quick method though, as the number of possibles paths for n cities is $(n-1)!\over2$. Since the initial city does not matter, nor does the direction, it differs from n!. THis, however, doesnt help much.
+This is the travelling salesman problem, the most intuitive approach to finding the soluton could be to calculate all possible routes and select the sortest. This is not a quick method though, as the number of possibles paths for n cities is $(n-1)!\over2$. Since the initial city does not matter, nor does the direction, it differs from n!. This, however, doesnt help much.
 
 ![ezgif com-optimize](https://github.com/LVinaud/TravellingSalesman-/assets/128495824/002f5615-1540-4816-ac5e-3a7b13f34102)
 
@@ -28,4 +28,4 @@ The best won't die nor be mutated until a new one is found.
 Mutation - There's a lot of ways this can happen, the most simple might be to randomly choose two cities to swap places. A mutation rate might even increase how many times this happens to each individual.
 
 The scoring, selection and mutation processes repeat until the number of generations is met.
-You might be thinking I forgot about crossover, but it was intentionally left out as it was most proeminently just generating random beings. The code without the graphics and with the most basics strategies can be seen in travelling.c
+You might be thinking I forgot about crossover, but it was intentionally left out as it was most proeminently just generating random beings. The code without the graphics and with the most basics strategies can be seen in travel.c
