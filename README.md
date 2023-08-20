@@ -10,7 +10,7 @@ An example of the evolutionary approach of mine trying to solve one situation wi
 
 ## Why evolutionary?
 
-The answer is simply that I am now taking the evolutionary systems discpline at college and wanted to test those conecpts in coding(C language). 
+The answer is simply that I am now taking the evolutionary systems discpline at college and wanted to test those concepts in coding(C language). 
 
 ## Approach
 
@@ -18,7 +18,7 @@ First, I need the cities to be generated. There's a city struct which contains a
 
 Also, it's important to be able to compare to an actual solid answer. That being said, a brute force algorithm was built for comparing porpuses, as it is extremely inefficient for reasons already explained. This brute force algorithm writes a file containing the perfect individual and also the time it took to calculate. (12 cities is taking around 50 seconds) (bruteforce.c)
 
-Now the main code reads from that file to start.
+With this all set and done, the main code reads from those 2 files.
 
 Randomly initialize the population with a given number of individuals by creating a population array of individual structures which contain an int array and a double fitness(to store the distance of its path). After this, their arrays are shuffled.
 
