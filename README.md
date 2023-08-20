@@ -29,3 +29,5 @@ Mutation - There's a lot of ways this can happen, the most simple might be to ra
 
 The scoring, selection and mutation processes repeat until the number of generations is met.
 You might be thinking I forgot about crossover, but it was intentionally left out as it was most proeminently just generating random beings. The code without the graphics and with the most basics strategies can be seen in travel.c
+
+A more fun version (with real time graphics) can be seen in travelling.c 
