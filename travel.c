@@ -95,7 +95,7 @@ int main(int argc, char* argv[]) {
     int repeatedbest = 0;//needed to keep track of reocurrence in the best one
     individual previousbest;
 
-    while((generation <= numgenerations) && (best.fitness - solved.fitness > 0.0001)) {
+    while(((generation <= numgenerations) || (numgenerations == -1)) && (best.fitness - solved.fitness > 0.001)) {
         //selection and scoring
         for(int i = 0; i < sizeofpop; i++) {
             score(population[i].array, &population[i].fitness, cities, numcities);
@@ -120,6 +120,7 @@ int main(int argc, char* argv[]) {
             repeatedbest = 0;
         }
         for(int i = 0; i < sizeofpop; i++) {
+            population[i] = best; //all the population is a clone of the best
             for(int j = 0; j < mutation; j++) {
                 int index1 = rand() % numcities, index2 = rand() % numcities;
                 int temp = population[i].array[index1];
@@ -127,12 +128,11 @@ int main(int argc, char* argv[]) {
                 population[i].array[index2] = temp;
             }
         }
-        population[0] = best; //I can't lose the best
         previousbest = best; //to keep track of how many times it was the same
         printf("%d %lf\n", generation, best.fitness);
         generation++;
     }
-//to compile gcc travelling.c -o travelling -lm 
+//to compile gcc travel.c -o travel -lm 
     clock_t finaltime = clock();
     double evolutivetime = (double)(finaltime-initialtime)/CLOCKS_PER_SEC; //calculates how many seconds it took
     if((evolutivetime - bruteforcetime) > 0) {
