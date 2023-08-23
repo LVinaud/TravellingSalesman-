@@ -119,7 +119,7 @@ int main(int argc, char* argv[]) {
     int repeatedbest = 0;
     individual previousbest;
 
-    while((generation <= numgenerations) && (quit == 0) && (best.fitness - solved.fitness > 0.0001)) {
+    while(((generation <= numgenerations)||(numgenerations == -1)) && (quit == 0) && (best.fitness - solved.fitness > 0.0001)) {
         while (SDL_PollEvent(&event)) {//this reads all the events that are stored in the events array (this array is emptied after it is read)
             if (event.type == SDL_QUIT) {
                 quit = 1; // this quit thing means that if the array of events detect a single sdl_quit, which is a ctrl c or a click on the x button, it will automatically change quit to 1 and thus making the while loop false
@@ -149,6 +149,7 @@ int main(int argc, char* argv[]) {
             repeatedbest = 0;
         }
         for(int i = 0; i < sizeofpop; i++) {
+            population[i] = best; //all the population is now a clone of the best
             for(int j = 0; j < mutation; j++) {
                 int index1 = rand() % numcities, index2 = rand() % numcities;
                 int temp = population[i].array[index1];
@@ -156,7 +157,6 @@ int main(int argc, char* argv[]) {
                 population[i].array[index2] = temp;
             }
         }
-        population[0] = best; //I can't lose the best
         previousbest = best; //to keep track of how many times it was the same
         printf("%d %lf\n", generation, best.fitness);
         generation++;
@@ -166,6 +166,7 @@ int main(int argc, char* argv[]) {
             for (int i = 0; i < numcities; i++) {//loop to draw the lines in both tracks (the best and the solved)
                     if(i == numcities - 1) {//this is the case where it is already on the end of the array and must draw the line to its starting point
                         SDL_RenderDrawLine(renderer, cities[best.array[i]].x, cities[best.array[i]].y, cities[best.array[0]].x, cities[best.array[0]].y);     
+                        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 100);
                         SDL_RenderDrawLine(renderer, cities[solved.array[i]].x-5, cities[solved.array[i]].y-5, cities[solved.array[0]].x-5, cities[solved.array[0]].y-5);
                         break;           
                     } 
@@ -191,6 +192,7 @@ int main(int argc, char* argv[]) {
     }
 //to compile gcc travelling.c -o travelling -lm -lSDL2 -lSDL2_ttf
     clock_t finaltime = clock();
+    for(int i = 0; i < 1000000000; i++) {;} // only done to be able to visualize the algorithm's accomplishment for a few seconds before ending the execution
     double evolutivetime = (double)(finaltime-initialtime)/CLOCKS_PER_SEC;
     if((evolutivetime - bruteforcetime) > 0) {//compares both times takne by the two different approaches
         printf("The evolutive algorithm took %lf seconds more than the brute force\n", evolutivetime - bruteforcetime);
