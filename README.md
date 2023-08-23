@@ -26,8 +26,9 @@ Score each individual and the one with the lowest fitness or distance is copied 
 The best won't die nor be mutated until a new one is found.
 
 Mutation - There's a lot of ways this can happen, the most simple might be to randomly choose two cities to swap places. A mutation rate might even increase how many times this happens to each individual.
+During development, I realized it could be greatly useful to make all the population clones of the best and mutate them accordingly to the mutation rate. This did increase the average speed of finding a lot.
 
 The scoring, selection and mutation processes repeat until the number of generations is met.
 You might be thinking I forgot about crossover, but it was intentionally left out as it was most proeminently just generating random beings. The code without the graphics and with the most basics strategies can be seen in travel.c
 
-A more fun version (with real time graphics) can be seen in travelling.c 
+A more fun version (with real time graphics) using the SDL library can be seen in travelling.c 
